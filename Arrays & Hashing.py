@@ -241,3 +241,29 @@ class Solution:
 
 # nums = [1,2,4,6]
 # print(Solution().productExceptSelf(nums))
+
+# 6.2) use prefix and post fix and loop through in O(n)
+# O(n^2)
+class Solution:
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        n = len(nums)
+        out = [0] * n
+        pref = [0] * n
+        suff = [0] * n
+
+        pref[0] = 1
+        suff[n-1] = 1
+
+        for i in range(1, n):
+            pref[i] = nums[i - 1] * pref[i - 1]
+
+        for i in range(n - 2, -1, -1):
+            suff[i] = nums[i + 1] * suff[i + 1]
+
+        for i in range(n):
+            out[i] = pref[i] * suff[i]
+
+        return out
+
+nums = [1,2,4,6]
+print(Solution().productExceptSelf(nums))
