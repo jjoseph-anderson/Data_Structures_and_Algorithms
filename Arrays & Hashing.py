@@ -339,5 +339,7 @@ class Solution:
             out[-1] += 1
         return out
 
-digits = [1,2,9, 9, 9]
-print(Solution().plusOne(digits))
+# digits = [1,2,9, 9, 9]
+# print(Solution().plusOne(digits))
+
+##### 9)
