@@ -392,6 +392,41 @@ class Solution:
 
         return True
 
+# s = "Was it a car or a cat I saw?"
+# print(Solution().isPalindrome(s))
 
-s = "Was it a car or a cat I saw?"
-print(Solution().isPalindrome(s))
+#### 167) Two Sum II
+
+# a) BF O(n^2)
+class Solution:
+    def twoSum(self, numbers: List[int], target: int) -> List[int]:
+        for i in range(len(numbers)):
+            for j in range(i+1, len(numbers)):
+                if numbers[i]+numbers[j]==target:
+                    return [i+1, j+1]
+
+# numbers = [1,2,3,4]
+# target = 3
+# print(Solution().twoSum(numbers, target))
+
+# b use two pointers to keep track of sum
+class Solution:
+    def twoSum(self, numbers: List[int], target: int) -> List[int]:
+        left = 0
+        right = len(numbers) - 1
+
+        while left < right:
+            if numbers[left] + numbers[right] > target:
+                right -= 1
+
+            elif numbers[left] + numbers[right] < target:
+                left += 1
+
+            else:
+                return [left + 1, right + 1]
+
+        return []
+
+numbers = [1,2,3,4]
+target = 3
+print(Solution().twoSum(numbers, target))
