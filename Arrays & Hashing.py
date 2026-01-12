@@ -527,15 +527,57 @@ class Solution:
 
         return res
 
+#### 42 Trapping Rain Water
 
+
+# BF
+# Time complexity O(n^2)
+# Space O(1)
 class Solution:
-    def reverseString(self, s: List[str]) -> None:
-        """
-        Do not return anything, modify s in-place instead.
-        """
-        s = s[::-1]
+    def trap(self, height: List[int]) -> int:
+        if len(height) == 0 :
+            return 0
 
-        return s
+        output = 0
 
-s = ["h","e","l","l","o"]
-print(Solution().reverseString(s))
+        for i in range(len(height)):
+            h_left = max((height[x] for x in range(i)),  default=0)
+            h_right = max((height[x] for x in range(i+1, len(height))),  default=0)
+
+            calc = min(h_left, h_right ) - height[i]
+
+            if calc > 0:
+                output += calc
+
+        return output
+
+# height = [0,2,0,3,1,0,1,3,2,1]
+# print(Solution().trap(height))
+
+## Use two pointers
+class Solution:
+    def trap(self, height: List[int]) -> int:
+        if len(height) == 0 :
+            return 0
+
+        left = 0
+        right = len(height) - 1
+        output = 0
+
+        leftMax, rightMax = height[left], height[right]
+
+        while left < right:
+            if leftMax < rightMax:
+                left += 1
+                leftMax = max(leftMax, height[left])
+                output += leftMax - height[left]
+
+            else:
+                right -=1
+                rightMax = max(rightMax, height[right])
+                output += rightMax - height[right]
+
+        return output
+
+height = [0,2,0,3,1,0,1,3,2,1]
+print(Solution().trap(height))
