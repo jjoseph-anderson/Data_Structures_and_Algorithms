@@ -618,5 +618,25 @@ class Solution:
 
         return out
 
-s = "zxyzxyz"
-print(Solution().lengthOfLongestSubstring(s))
+# s = "zxyzxyz"
+# print(Solution().lengthOfLongestSubstring(s))
+
+## sliding window
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        out = 0
+        l = 0
+        seen = set()
+
+        for r in range(len(s)):
+            while s[r] in seen:
+                seen.remove(s[l])
+                l+=1
+            seen.add(s[r])
+
+            out = max(out, r - l +1)
+
+        return out
+
+# s = "zxyzxyz"
+# print(Solution().lengthOfLongestSubstring(s))
