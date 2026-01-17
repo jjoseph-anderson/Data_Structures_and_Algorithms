@@ -50,4 +50,26 @@ def find_customers(customers: pd.DataFrame, orders: pd.DataFrame) -> pd.DataFram
 
     return df
 
-print(find_customers(customers, orders))
+# print(find_customers(customers, orders))
+
+##### 1148) Article Views I
+
+data = { "article_id": [1, 1, 2, 2, 4, 3, 3],
+         "author_id": [3, 3, 7, 7, 7, 4, 4],
+         "viewer_id": [5, 6, 7, 6, 1, 4, 4],
+         "view_date": [ "2019-08-01", "2019-08-02", "2019-08-01", "2019-08-02", "2019-07-22", "2019-07-21", "2019-07-21" ] }
+
+views = pd.DataFrame(data)
+
+def article_views(views: pd.DataFrame) -> pd.DataFrame:
+    df = views[views.author_id == views.viewer_id]
+
+    df = df[['author_id']].rename(columns = {"author_id": "id"})
+
+    df = df.drop_duplicates()
+
+    df = df.sort_values(by = "id")
+
+    return df
+
+print(article_views(views))
