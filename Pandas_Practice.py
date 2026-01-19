@@ -100,4 +100,30 @@ def invalid_tweets(tweets: pd.DataFrame) -> pd.DataFrame:
 
     return invalid[['tweet_id']]
 
-print(invalid_tweets(tweets))
+# print(invalid_tweets(tweets))
+
+
+#### 1873) Calculate Special Bonus
+
+data = { "employee_id": [2, 3, 7, 8, 9],
+         "name": ["Meir", "Michael", "Addilyn", "Juan", "Kannon"],
+         "salary": [3000, 3800, 7400, 6100, 7700] }
+
+employees = pd.DataFrame(data)
+
+def calculate_special_bonus(employees: pd.DataFrame) -> pd.DataFrame:
+    df = employees
+    df[['bonus']] = 0
+
+    mask = (df.employee_id % 2 == 1) & (~df.name.str.startswith('M'))
+
+    df.loc[mask, 'bonus'] = df.salary
+
+    df = df[['employee_id', 'bonus']]
+
+    df = df.sort_values('employee_id')
+
+    return df
+
+print(calculate_special_bonus(employees))
+
