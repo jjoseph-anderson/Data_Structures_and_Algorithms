@@ -177,3 +177,27 @@ def find_patients(patients: pd.DataFrame) -> pd.DataFrame:
 
 # print(find_patients(patients))
 
+##### 177) Nth Highest Salary
+
+data = { 'id': [1, 2, 3],
+         'salary': [100, 200, 300] }
+
+employee = pd.DataFrame(data)
+
+
+def nth_highest_salary(employee: pd.DataFrame, N: int) -> pd.DataFrame:
+    unique_salaries = sorted(employee['salary'].unique(), reverse=True)
+
+    if len(unique_salaries) < N:
+        result = pd.DataFrame({f'getNthHighestSalary({N})': [None]})
+
+    elif N <= 0:
+        result = pd.DataFrame({f'getNthHighestSalary({N})': [None]})
+
+    else:
+        nth_salary = unique_salaries[N - 1]
+        result = pd.DataFrame({f'getNthHighestSalary({N})': [nth_salary]})
+
+    return result
+
+print(nth_highest_salary(employee, 2))
