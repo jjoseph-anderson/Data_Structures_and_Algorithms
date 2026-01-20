@@ -201,3 +201,4 @@ def nth_highest_salary(employee: pd.DataFrame, N: int) -> pd.DataFrame:
     return result
 
 print(nth_highest_salary(employee, 2))
+
