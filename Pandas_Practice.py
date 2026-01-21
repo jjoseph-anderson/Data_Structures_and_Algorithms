@@ -224,5 +224,19 @@ def second_highest_salary(employee: pd.DataFrame) -> pd.DataFrame:
 
     return df
 
-print(second_highest_salary(employee))
+# print(second_highest_salary(employee))
+
+#### 184) Department Highest Salary
+
+employee_data = { 'id': [1, 2, 3, 4, 5],
+                  'name': ['Joe', 'Jim', 'Henry', 'Sam', 'Max'],
+                  'salary': [70000, 90000, 80000, 60000, 90000],
+                  'departmentId': [1, 1, 2, 2, 1] }
+
+employee_df = pd.DataFrame(employee_data)
+
+department_data = { 'id': [1, 2],
+                    'name': ['IT', 'Sales'] }
+
+department_df = pd.DataFrame(department_data)
 
