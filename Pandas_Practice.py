@@ -209,4 +209,20 @@ data = { 'id': [1, 2, 3],
 
 employee = pd.DataFrame(data)
 
+def second_highest_salary(employee: pd.DataFrame) -> pd.DataFrame:
+    sort_sal = sorted(employee.salary.unique())
+
+    index = len(sort_sal)-2
+
+    if index >= 0:
+        val = sort_sal[index]
+
+    if index < 0:
+        val = None
+
+    df = pd.DataFrame({'SecondHighestSalary': [val]})
+
+    return df
+
+print(second_highest_salary(employee))
 
