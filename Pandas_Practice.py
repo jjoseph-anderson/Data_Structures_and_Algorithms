@@ -233,10 +233,10 @@ employee_data = { 'id': [1, 2, 3, 4, 5],
                   'salary': [70000, 90000, 80000, 60000, 90000],
                   'departmentId': [1, 1, 2, 2, 1] }
 
-employee_df = pd.DataFrame(employee_data)
+employee = pd.DataFrame(employee_data)
 
 department_data = { 'id': [1, 2],
                     'name': ['IT', 'Sales'] }
 
-department_df = pd.DataFrame(department_data)
+department = pd.DataFrame(department_data)
 
