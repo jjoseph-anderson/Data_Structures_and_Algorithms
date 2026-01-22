@@ -240,3 +240,18 @@ department_data = { 'id': [1, 2],
 
 department = pd.DataFrame(department_data)
 
+def department_highest_salary(employee: pd.DataFrame, department: pd.DataFrame) -> pd.DataFrame:
+    department = department.rename(columns = {'id': 'departmentId'})
+
+    joined_dep_emp = pd.merge(employee, department, how = 'left', on = 'departmentId')
+    max_sal = joined_dep_emp.groupby('departmentId').agg({'salary': 'max'})
+
+    out_raw = pd.merge(joined_dep_emp, max_sal, 'inner', on = ['salary', 'departmentId'])
+    out = out_raw[['name_y', 'name_x', 'salary']]
+    out = out.rename(columns = {'name_y': 'Department',
+                      'name_x': 'Employee',
+                      'salary': 'Salary'})
+
+    return out
+
+print(department_highest_salary(employee, department))
