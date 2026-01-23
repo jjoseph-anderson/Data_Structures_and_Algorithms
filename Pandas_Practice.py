@@ -280,3 +280,11 @@ def order_scores(scores: pd.DataFrame) -> pd.DataFrame:
 person = pd.DataFrame({ 'id': [1, 2, 3],
                     'email': ['john@example.com', 'bob@example.com', 'john@example.com'] })
 
+# time complexity sorting is O(nlogn) and drop duplicates is O(n)
+# hence time complexity is O(nlogn)
+def delete_duplicate_emails(person: pd.DataFrame) -> None:
+
+    person.sort_values(["id"], inplace = True)
+    person.drop_duplicates(subset=["email"], inplace=True)
+
+print(delete_duplicate_emails(person))
