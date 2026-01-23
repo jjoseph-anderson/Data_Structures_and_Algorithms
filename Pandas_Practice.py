@@ -273,4 +273,10 @@ def order_scores(scores: pd.DataFrame) -> pd.DataFrame:
 
     return out
 
-print(order_scores(scores))
+# print(order_scores(scores))
+
+#### 196) Delete Duplicate Emails
+
+person = pd.DataFrame({ 'id': [1, 2, 3],
+                    'email': ['john@example.com', 'bob@example.com', 'john@example.com'] })
+
