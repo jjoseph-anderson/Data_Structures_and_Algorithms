@@ -376,3 +376,14 @@ data = { 'student': ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'],
          'class': ['Math', 'English', 'Math', 'Biology', 'Math', 'Computer', 'Math', 'Math', 'Math'] }
 
 courses = pd.DataFrame(data)
+
+def find_classes(courses: pd.DataFrame) -> pd.DataFrame:
+    df = courses.groupby(by = 'class', as_index = False).count()
+
+    df = df[df['student'] >= 5]
+
+    df = df[['class']]
+
+    return df
+
+print(find_classes(courses))
