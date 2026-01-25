@@ -342,4 +342,21 @@ def game_analysis(activity: pd.DataFrame) -> pd.DataFrame:
 
     return df
 
-print(game_analysis(activity))
+# print(game_analysis(activity))
+
+# could just get minimum of 'event_date' column
+def game_analysis(activity: pd.DataFrame) -> pd.DataFrame:
+    df = activity.groupby(by = 'player_id', as_index = False)['event_date'].min()
+
+    df = df.rename(columns = {'event_date' : 'first_login'})
+
+    return df
+
+# print(game_analysis(activity))
+
+##### 2356) Number of Unique Subjects Taught by Each Teacher
+
+data = { 'teacher_id': [1, 1, 1, 2, 2, 2, 2],
+         'subject_id': [2, 2, 3, 1, 2, 3, 4],
+         'dept_id': [3, 4, 3, 1, 1, 1, 1] }
+teacher = pd.DataFrame(data)
