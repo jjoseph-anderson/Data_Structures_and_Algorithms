@@ -368,4 +368,11 @@ def count_unique_subjects(teacher: pd.DataFrame) -> pd.DataFrame:
 
     return df
 
-print(count_unique_subjects(teacher))
+# print(count_unique_subjects(teacher))
+
+##### 596) Classes With at Least 5 Students
+
+data = { 'student': ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'],
+         'class': ['Math', 'English', 'Math', 'Biology', 'Math', 'Computer', 'Math', 'Math', 'Math'] }
+
+courses = pd.DataFrame(data)
