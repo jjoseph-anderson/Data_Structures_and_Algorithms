@@ -333,3 +333,13 @@ data = { "player_id": [1, 1, 2, 3, 3],
          "games_played": [5, 6, 1, 0, 5] }
 
 activity = pd.DataFrame(data)
+
+def game_analysis(activity: pd.DataFrame) -> pd.DataFrame:
+    df = activity.groupby(by = 'player_id', as_index = False).min()
+
+    df = df[['player_id', 'event_date']]
+    df = df.rename(columns = {'event_date' : 'first_login'})
+
+    return df
+
+print(game_analysis(activity))
