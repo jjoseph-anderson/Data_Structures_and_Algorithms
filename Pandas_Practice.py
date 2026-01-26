@@ -404,4 +404,11 @@ def largest_orders(orders: pd.DataFrame) -> pd.DataFrame:
 
     return df
 
-print(largest_orders(orders))
+# print(largest_orders(orders))
+
+#### 1484) Group Sold Products By The Date
+
+data = { 'sell_date': [ '2020-05-30', '2020-06-01', '2020-06-02', '2020-05-30', '2020-06-01', '2020-06-02', '2020-05-30' ],
+         'product': [ 'Headphone', 'Pencil', 'Mask', 'Basketball', 'Bible', 'Mask', 'T-Shirt' ] }
+
+activities = pd.DataFrame(data)
