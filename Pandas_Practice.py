@@ -430,3 +430,12 @@ data = { 'date_id': [ '2020-12-8', '2020-12-8', '2020-12-8', '2020-12-7', '2020-
          'partner_id': [ 1, 0, 2, 1, 0, 2, 1, 1, 2, 1 ] }
 
 daily_sales = pd.DataFrame(data)
+
+def daily_leads_and_partners(daily_sales: pd.DataFrame) -> pd.DataFrame:
+    df = daily_sales.groupby(by = ['date_id','make_name'], as_index = False).nunique()
+
+    df = df.rename(columns = {'lead_id': 'unique_leads','partner_id': 'unique_partners'})
+
+    return df
+
+print(daily_leads_and_partners(daily_sales))
