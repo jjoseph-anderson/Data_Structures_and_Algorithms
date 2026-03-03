@@ -967,4 +967,13 @@ def project_employees_i(project: pd.DataFrame, employee: pd.DataFrame) -> pd.Dat
 
     return df
 
+### 602) Friend Requests II: Who Has the Most Friends
 
+def most_friends(request_accepted: pd.DataFrame) -> pd.DataFrame:
+    df = pd.concat([request_accepted["requester_id"], request_accepted["accepter_id"]]).to_frame('id')
+    df = df.groupby(by="id", as_index=False).size()
+    mask = (df['size'] == max(df['size']))
+    df = df[mask]
+    df = df.rename(columns={"size": "num"})
+
+    return df
