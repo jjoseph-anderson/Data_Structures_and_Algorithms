@@ -966,3 +966,5 @@ def project_employees_i(project: pd.DataFrame, employee: pd.DataFrame) -> pd.Dat
     df['average_years'] = round(df['average_years'], 2)
 
     return df
+
+
